@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUEGO CHINA</title>
+    <style>
+        body{
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMmXxVUrQVa8qtMiFq1jm8gDrRCwiYZmWC_Q&s");
+
+        }
+        aside{
+            z-index:999;
+            position: fixed;
+            background-color: white;
+            border: 1px solid black;
+            display:block;
+            float:right;
+            top:30px;
+        }
+        section{
+            width:80%;
+            background-color: red;
+            opacity: 1;
+        }
+        #div{
+            display:none;
+            position:fixed;
+            z-index:1;
+            height:300px;
+            width:300px;
+            border:1px solid black;
+            border-radius: 50%;
+            background-color: transparent;
+            top:50px;
+            left:50px;
+            display:flex;
+            align-items: center;
+            transform: translate(-50%,-50%);
+            pointer-events: none;
+            
+        }
+        #div2{
+            position:fixed;
+            z-index:998;
+            width:50px;
+            border:1px solid black;
+            border-radius: 50%;
+            background-color: transparent;
+            top:50px;
+            left:50px;
+            display:flex;
+            align-items: center;
+            transform: translate(-50%,-50%);
+            
+        }
+        h2{
+            position:relative;
+            float: right;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            z-index:999;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>MATA LA PROPAGANDA COMUNISTA</h2>
+    <<div id="div"></div>
+    <section id="section">
+    </section>
+    <aside id="aside">
+        <p id="contador">SOCIAL CREDITS: 0</p>
+        <p id="contador2">PODER: 3</p>
+        <p id="contador3">TIEMPO RESTANTE: 25</p>
+    </aside>
+    <button id="btn">click</button>
+    <audio hidden autoplay id="audio">
+        <source src="Team America - America, Fck Yeah! (Lyrics)" type="audio/mp3">
+    </audio>
+</body>
+<script>
+    arrayImagenes = [
+    "https://img.freepik.com/vector-premium/silueta-arma-senal-fondo-blanco_608024-1893.jpg?semt=ais_hybrid", 
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Mestiso_1770.jpg/640px-Mestiso_1770.jpg", 
+    "https://i.ytimg.com/vi/1Z4ypnUsn6E/maxresdefault.jpg", 
+    "https://www.semfyc.es/storage/notices/wp-content/uploads/2016/07/InmigracionBanner.jpg",
+    "https://imagenes.elpais.com/resizer/v2/KYB2LZN245EM3BGZMVRH3WDHRM.jpg?auth=aa9bc12807926976af5c1bf8f1d0c681554c6a01bb6e1f6c34cbda81178d120d&width=1200&height=675&smart=true", 
+    "https://hips.hearstapps.com/hmg-prod/images/gettyimages-113975611.jpg?crop=1xw:1.0xh;center,top&resize=640:*", 
+    "https://humanidades.com/wp-content/uploads/2017/07/bandera-comunista-min-e1501005876115.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBRBq-9uIMXs01XW9K3vE4N9qn9yvfSg2e0w&s",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp9zprVLavgmyN39L87Sgbqdh1vKAngjmg2w&s",
+    "https://images.adsttc.com/media/images/5e55/7d4a/6ee6/7e4e/7800/0422/medium_jpg/01_-_Cortes%C3%ADa_Bach_Arquitectes_PORTADA.jpg?1582660931",
+    "https://educahistoria.com/wp-content/uploads/2023/08/queeslageografia-1080x675.png",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/MX_road_sign_SR-9-050.svg/1200px-MX_road_sign_SR-9-050.svg.png",
+    "https://previews.123rf.com/images/andyadi/andyadi2006/andyadi200600145/148870793-formato-de-24-horas-establecido-plantilla-de-dise%C3%B1o-de-icono-de-vector-de-reloj-digital-cuadrado.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz-ZSLBaNduMLFUK7-WJr9g-2SSNOOWzZFdg&s",
+    "https://static.eldiario.es/clip/a29f0a2b-d409-496c-b7b8-918bf4be7420_16-9-discover-aspect-ratio_default_0.jpg",
+    "https://eurofoodmart.com/cdn/shop/files/FANTAORANGE1.5L.png?v=1704741145",
+    "https://mardeniebla.es/wp-content/uploads/2024/06/Derechos-sociales.png"
+    ]
+    var contador = 0
+    var contadorAtaque = 3
+    contadorPerder = 25
+    var fired = false
+    document.addEventListener("mousemove",function(e){
+        var x = parseInt(e.pageX) 
+        var y = parseInt(e.pageY)
+        document.getElementById("div").style.top = e.pageY + "px"
+        document.getElementById("div").style.left = e.pageX + "px"
+    })
+    var date = new Date()
+    setInterval(function(){
+        if(contadorPerder <= 0){
+            alert("GANARON LOS TERRORISTAS")
+            window.location.href ="https://youtu.be/1y-l0TJRgkI?si=XQ-70ifGvxONHWuc"
+            
+        }
+        contadorPerder--
+        document.getElementById("contador3").textContent ="TIEMPO RESTANTE: "+ contadorPerder 
+    },1000)
+    var intervalo = setInterval(function(){
+        var x = Math.random() * (window.innerWidth - 100);
+        var y = Math.random() * (window.innerHeight - 100);
+        var img = document.createElement("img")
+        img.src= arrayImagenes[Math.floor(Math.random() * arrayImagenes.length)]
+
+
+        document.body.addEventListener("keydown", function(e){
+            if(fired){
+                return
+            }
+            fired = true
+            e.preventDefault();
+            if(contadorAtaque <= 0){
+                return
+            }
+            if (e.repeat) return;
+            if(e.key == "ArrowUp"){
+                console.log(e.key)
+                document.getElementById("div").style.display = "block"
+                var imgs = document.getElementsByTagName("img")
+                contadorAtaque--
+                for(img of imgs){
+                    if(isCollide(document.getElementById("div"), img)){
+                        img.remove()
+                        contador++
+                        document.getElementById("contador").textContent = "LIBERTAD: " + contador;
+                        document.getElementById("contador2").textContent = "PODER: " + contadorAtaque;
+                    }
+                }
+                if(contador >= 100){
+                            alert("Los padres fundadores estarían orgullosos!")
+                            clearInterval(intervalo)
+                            var imgs = document.getElementsByTagName("img")
+                            for(img of imgs){
+                                img.style.display = "none"
+                
+                            }
+                            window.location.href ="https://youtu.be/TN0dKje1k5E?si=qwSW0GkjaTeiG5ca"
+                        }
+
+
+            }
+        })
+        document.body.addEventListener("keyup", function(){
+            fired = false
+        })
+
+        img.addEventListener("click", function(){
+            document.getElementById("audio").play()
+            img.remove()
+            contador++
+            document.getElementById("contador").textContent = "LIBERTAD: " + contador;
+            if(contador >= 100){
+            alert("Los padres fundadores estarían orgullosos!")
+            clearInterval(intervalo)
+            var imgs = document.getElementsByTagName("img")
+            for(img of imgs){
+                img.style.display = "none"
+                window.location.href ="https://youtu.be/TN0dKje1k5E?si=qwSW0GkjaTeiG5ca"
+            }
+            }
+            
+        })
+        img.style.position = "absolute"; 
+        img.style.top = y + "px";
+        img.style.left = x + "px";
+        img.style.height = "200px"
+        img.style.width = "200px"
+        img.style.zIndex = "0"
+        document.body.append(img)
+    },100)
+
+    function isCollide(a, b) {
+    var aRect = a.getBoundingClientRect();
+    var bRect = b.getBoundingClientRect();
+    return !(
+        ((aRect.top + aRect.height) < (bRect.top)) ||
+        (aRect.top > (bRect.top + bRect.height)) ||
+        ((aRect.left + aRect.width) < bRect.left) ||
+        (aRect.left > (bRect.left + bRect.width))
+    );
+
+    }
+
+
+</script>
+</html>
