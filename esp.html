@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUEGO CHINA</title>
+    <style>
+        body{
+            background-image: url("https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/b0/a4/e9/b0a4e98c-6f9b-776f-1d2f-8e7653f81e85/23UMGIM42030.rgb.jpg/1200x1200bb.jpg");
+
+        }
+        aside{
+            z-index:999;
+            position: fixed;
+            background-color: white;
+            border: 1px solid black;
+            display:block;
+            float:right;
+            top:30px;
+        }
+        section{
+            width:80%;
+            background-color: red;
+            opacity: 1;
+        }
+        #div{
+            display:none;
+            position:fixed;
+            z-index:1;
+            height:300px;
+            width:300px;
+            border:1px solid black;
+            border-radius: 50%;
+            background-color: transparent;
+            top:50px;
+            left:50px;
+            display:flex;
+            align-items: center;
+            transform: translate(-50%,-50%);
+            pointer-events: none;
+            
+        }
+        #div2{
+            position:fixed;
+            z-index:998;
+            width:50px;
+            border:1px solid black;
+            border-radius: 50%;
+            background-color: transparent;
+            top:50px;
+            left:50px;
+            display:flex;
+            align-items: center;
+            transform: translate(-50%,-50%);
+            
+        }
+        h2{
+            position:relative;
+            float: right;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            z-index:999;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>MATA LA PROPAGANDA GUIRI</h2>
+    <<div id="div"></div>
+    <section id="section">
+    </section>
+    <aside id="aside">
+        <p id="contador">TAPAS: 0</p>
+        <p id="contador2">INIESTA: 3</p>
+        <p id="contador3">SEGUNDOS DE SIESTA: 25</p>
+    </aside>
+    <button id="btn">click</button>
+    <audio hidden autoplay id="audio">
+        <source src="" type="audio/mp3">
+    </audio>
+</body>
+<script>
+    arrayImagenes = [
+    "https://s1.elespanol.com/2019/08/01/actualidad/actualidad_418220532_131422946_1024x576.jpg", 
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/255px-Flag_of_France.svg.png", 
+    "https://s1.elespanol.com/2021/04/23/reportajes/575955112_179060292_1024x576.jpg", 
+    "https://images.ecestaticos.com/19rNAHMd2xxiP8RD1MsDQcEaLUA=/0x0:2272x1477/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fa67%2Ff69%2F527%2Fa67f695273a97572f55e162284c88dbc.jpg",
+    "https://cadenaser.com/resizer/v2/FB3VNKLSXJEOPKRPWQVVXATRM4.jfif?auth=a2ac747659b4cd53d1021d8935d67e891ece839ae9b28ccaf3685e4fbd4d3fe0&quality=70&width=1200&height=900&focal=378,158", 
+    "https://carteleraturia.com/archivos_turia//uploads/2023/08/F1xT-zFWcAA2M8h.jpg", 
+    "https://i.makeagif.com/media/10-13-2015/DUP__Y.gif",
+    "https://i.blogs.es/f5edd6/2641225311_c6ae6a5e7f_o/1366_2000.jpeg",
+    "https://phantom-marca.unidadeditorial.es/8328618d42827371a1c10c0cb42ddae2/resize/828/f/jpg/assets/multimedia/imagenes/2025/01/15/17369382431819.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtY53QrshvQX5RW5CIoYRfrtuc0mfTKli6lg&s",
+    "https://avatars.githubusercontent.com/u/698437?s=200&v=4",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVa9t_UO64jJZtpPfUNMRcU8y5vFjtLRnqQA&s",
+    "https://i.makeagif.com/media/2-07-2016/-1CI1Y.gif",
+    "https://estaticos-cdn.prensaiberica.es/clip/6e6f7c6a-6152-4fc4-8fe9-2541a229f9a7_alta-libre-aspect-ratio_default_0.jpg",
+    "https://media.traveler.es/photos/6137778d2a0f25a763b1b573/master/pass/104211.jpg",
+    "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2011/10/16/1318792338735/Eta-members-announce-a-pe-007.jpg?width=465&dpr=1&s=none&crop=none",
+    "https://upload.wikimedia.org/wikipedia/commons/d/db/Logo_de_la_Agencia_Tributaria.jpg"
+    ]
+    var contador = 0
+    var contadorAtaque = 3
+    contadorPerder = 25
+    var fired = false
+    document.addEventListener("mousemove",function(e){
+        var x = parseInt(e.pageX) 
+        var y = parseInt(e.pageY)
+        document.getElementById("div").style.top = e.pageY + "px"
+        document.getElementById("div").style.left = e.pageX + "px"
+    })
+    var date = new Date()
+    setInterval(function(){
+        if(contadorPerder <= 0){
+            alert("LOS MOROS INVADIERON LA PENÍNSULA DE NUEVO")
+            window.location.href ="https://youtu.be/53dujzDx5hs?si=Kau8zCZ2lAm-tAxq"
+            
+        }
+        contadorPerder--
+        document.getElementById("contador3").textContent ="TIEMPO RESTANTE: "+ contadorPerder 
+    },1000)
+    var intervalo = setInterval(function(){
+        var x = Math.random() * (window.innerWidth - 100);
+        var y = Math.random() * (window.innerHeight - 100);
+        var img = document.createElement("img")
+        img.src= arrayImagenes[Math.floor(Math.random() * arrayImagenes.length)]
+
+
+        document.body.addEventListener("keydown", function(e){
+            if(fired){
+                return
+            }
+            fired = true
+            e.preventDefault();
+            if(contadorAtaque <= 0){
+                return
+            }
+            if (e.repeat) return;
+            if(e.key == "ArrowUp"){
+                console.log(e.key)
+                document.getElementById("div").style.display = "block"
+                var imgs = document.getElementsByTagName("img")
+                contadorAtaque--
+                for(img of imgs){
+                    if(isCollide(document.getElementById("div"), img)){
+                        img.remove()
+                        contador++
+                        document.getElementById("contador").textContent = "TAPAS: " + contador;
+                        document.getElementById("contador2").textContent = "INIESTA: " + contadorAtaque;
+                    }
+                }
+                if(contador >= 100){
+                            alert("VIVA ESPAÑA JODER")
+                            clearInterval(intervalo)
+                            var imgs = document.getElementsByTagName("img")
+                            for(img of imgs){
+                                img.style.display = "none"
+                
+                            }
+                            window.location.href ="https://youtu.be/gxZPAmi4NEw?si=axiDdSAW9G-WdFwT"
+                        }
+
+
+            }
+        })
+        document.body.addEventListener("keyup", function(){
+            fired = false
+        })
+
+        img.addEventListener("click", function(){
+            document.getElementById("audio").play()
+            img.remove()
+            contador++
+            document.getElementById("contador").textContent = "LIBERTAD: " + contador;
+            if(contador >= 100){
+            alert("VIVA ESPAÑA JODER")
+            clearInterval(intervalo)
+            var imgs = document.getElementsByTagName("img")
+            for(img of imgs){
+                img.style.display = "none"
+                window.location.href ="https://youtu.be/gxZPAmi4NEw?si=axiDdSAW9G-WdFwT"
+            }
+            }
+            
+        })
+        img.style.position = "absolute"; 
+        img.style.top = y + "px";
+        img.style.left = x + "px";
+        img.style.height = "200px"
+        img.style.width = "200px"
+        img.style.zIndex = "0"
+        img.alt = img.src
+        document.body.append(img)
+    },100)
+
+    function isCollide(a, b) {
+    var aRect = a.getBoundingClientRect();
+    var bRect = b.getBoundingClientRect();
+    return !(
+        ((aRect.top + aRect.height) < (bRect.top)) ||
+        (aRect.top > (bRect.top + bRect.height)) ||
+        ((aRect.left + aRect.width) < bRect.left) ||
+        (aRect.left > (bRect.left + bRect.width))
+    );
+
+    }
+
+
+</script>
+</html>
