@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUEGO CHINA</title>
+    <style>
+        body{
+            background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Zeng_Liansong%27s_proposal_for_the_PRC_flag.svg/220px-Zeng_Liansong%27s_proposal_for_the_PRC_flag.svg.png");
+
+        }
+        aside{
+            z-index:999;
+            position: fixed;
+            background-color: white;
+            border: 1px solid black;
+            display:block;
+            float:right;
+            top:30px;
+        }
+        section{
+            width:80%;
+            background-color: red;
+            opacity: 1;
+        }
+        #div{
+            display:none;
+            position:fixed;
+            z-index:1;
+            height:500px;
+            width:500px;
+            border:1px solid black;
+            border-radius: 50%;
+            background-color: transparent;
+            top:50px;
+            left:50px;
+            display:flex;
+            align-items: center;
+            transform: translate(-50%,-50%);
+            pointer-events: none;
+            
+        }
+        #div2{
+            position:fixed;
+            z-index:999;
+            width:50px;
+            border:1px solid black;
+            border-radius: 50%;
+            background-color: transparent;
+            top:50px;
+            left:50px;
+            display:flex;
+            align-items: center;
+            transform: translate(-50%,-50%);
+            
+        }
+        h2{
+            z-index:999;
+            text-align: center;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>MATA LA PROPAGANDA CHINA</h2>
+    <<div id="div"></div>
+    <section id="section">
+    </section>
+    <aside id="aside">
+        <p id="contador">SOCIAL CREDITS: 0</p>
+        <p id="contador2">PODER: 3</p>
+    </aside>
+    <button id="btn">click</button>
+    <audio hidden autoplay id="audio">
+        <source src="Red Sun in the Sky (Sub Español).mp3" type="audio/mp3">
+    </audio>
+</body>
+<script>
+    arrayImagenes = ["https://raw.githubusercontent.com/cirosantilli/china-dictatorship-media/master/Xi_Pooh_Photoshop.webp", "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Flag_of_the_Republic_of_China.svg/2560px-Flag_of_the_Republic_of_China.svg.png", "https://c.files.bbci.co.uk/C554/production/_107061505_mediaitem107061504.jpg", "https://thediplomat.com/wp-content/uploads/2019/03/sizes/td-story-s-2/thediplomat-students_for_a_free_tibet_protesters_marched_to_lafayette_park_from_the_chinese_embassy_in_d.c._%E8%87%AA%E7%94%B1%E8%A5%BF%E8%97%8F%E5%AD%B8%E7%94%9F%E9%81%8B%E5%8B%95%E6%8A%97%E8%AD%B0%E8%80%85%E6%96%BC%E7%BE%8E%E5%9C%8B%E8%8F%AF%E5%BA%9C%E5%BE%9E%E4%B8%AD%E5%9C%8B%E5%A4%A7%E4%BD%BF%E9%A4%A8%E9%81%8A%E8%A1%8C%E8%87%B3%E6%8B%89%E6%B3%95%E8%91%89%E5%85%AC%E5%9C%92.jpg", "https://www.unimedia.tech/wp-content/uploads/2023/12/openAI-chat-gpt-1-4.jpg", "https://www.whatsonweibo.com/wp-content/uploads/2024/07/triumph.jpg", "https://cdn.mos.cms.futurecdn.net/nEiheFH7GmTBQtje6XC7ZY-1200-80.jpg", "https://i.pinimg.com/236x/b9/73/59/b97359439d117936ad4c92dbb4cfb7c9.jpg", "https://i.pinimg.com/736x/f4/cf/5d/f4cf5d1eea7e6c356dfed0eb2a0acfca.jpg"]
+    var contador = 0
+    var contadorAtaque = 3
+    var fired = false
+    document.addEventListener("mousemove",function(e){
+        var x = parseInt(e.pageX) 
+        var y = parseInt(e.pageY)
+        document.getElementById("div").style.top = e.pageY + "px"
+        document.getElementById("div").style.left = e.pageX + "px"
+    })
+
+    var intervalo = setInterval(function(){
+        var x = Math.random() * (window.innerWidth - 100);
+        var y = Math.random() * (window.innerHeight - 100);
+        var img = document.createElement("img")
+        img.src= arrayImagenes[Math.floor(Math.random() * arrayImagenes.length)]
+
+
+        document.body.addEventListener("keydown", function(e){
+            if(fired){
+                return
+            }
+            fired = true
+            e.preventDefault();
+            if(contadorAtaque <= 0){
+                return
+            }
+            if (e.repeat) return;
+            if(e.key == "ArrowUp"){
+                console.log(e.key)
+                document.getElementById("div").style.display = "block"
+                var imgs = document.getElementsByTagName("img")
+                contadorAtaque--
+                for(img of imgs){
+                    if(isCollide(document.getElementById("div"), img)){
+                        img.remove()
+                        contador++
+                        document.getElementById("contador").textContent = "SOCIAL CREDITS: " + contador;
+                        document.getElementById("contador2").textContent = "PODER: " + contadorAtaque;
+                    }
+                }
+                if(contador >= 100){
+                            alert("eres un buen ciudadano! Mao estaría orgulloso 我喜欢黑色的")
+                            clearInterval(intervalo)
+                            var imgs = document.getElementsByTagName("img")
+                            for(img of imgs){
+                                img.style.display = "none"
+                                window.location.href ="https://youtu.be/Fdc-m5hTRpk?si=z_h0lIs6OFNIhQ1W"
+                            }
+                        }
+
+
+            }
+        })
+        document.body.addEventListener("keyup", function(){
+            fired = false
+        })
+
+        img.addEventListener("click", function(){
+            document.getElementById("audio").play()
+            img.remove()
+            contador++
+            document.getElementById("contador").textContent = "SOCIAL CREDITS: " + contador;
+            if(contador >= 100){
+            alert("eres un buen ciudadano! Mao estaría orgulloso 我喜欢黑色的")
+            clearInterval(intervalo)
+            var imgs = document.getElementsByTagName("img")
+            for(img of imgs){
+                img.style.display = "none"
+                window.location.href ="https://youtu.be/Fdc-m5hTRpk?si=z_h0lIs6OFNIhQ1W"
+            }
+            }
+            
+        })
+        img.style.position = "absolute"; 
+        img.style.top = y + "px";
+        img.style.left = x + "px";
+        img.style.height = "200px"
+        img.style.width = "200px"
+        img.style.zIndex = "0"
+        document.body.append(img)
+    },100)
+
+    function isCollide(a, b) {
+    var aRect = a.getBoundingClientRect();
+    var bRect = b.getBoundingClientRect();
+    return !(
+        ((aRect.top + aRect.height) < (bRect.top)) ||
+        (aRect.top > (bRect.top + bRect.height)) ||
+        ((aRect.left + aRect.width) < bRect.left) ||
+        (aRect.left > (bRect.left + bRect.width))
+    );
+
+
+    function calcularGanar(contador){
+        if(contador >= 100){
+            alert("eres un buen ciudadano! Mao estaría orgulloso 我喜欢黑色的")
+            clearInterval(intervalo)
+            var imgs = document.getElementsByTagName("img")
+            for(img of imgs){
+                img.style.display = "none"
+                window.location.href ="https://youtu.be/Fdc-m5hTRpk?si=z_h0lIs6OFNIhQ1W"
+            }
+        }
+        else{
+            return false
+        }
+    }
+}
+
+
+</script>
+</html>
